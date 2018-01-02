@@ -1,0 +1,76 @@
+<div class="card">
+  <div class="card-body">
+    <form (ngSubmit)="submit(form)" [formGroup]="form" class="p-4" novalidate>
+      <div class="row p-1">
+          <mat-form-field class="col-md-12">
+              <input formControlName="title" matInput placeholder="Title">
+              <mat-error *ngIf="!form.get('title').valid && form.get('title').touched">
+                    Title is <strong>Required</strong>
+              </mat-error>
+          </mat-form-field>
+      </div>
+      <div class="row p-1">
+          <mat-form-field class="col-md-3">
+              <input formControlName="startDate" matInput [matDatepicker]="startDate" placeholder="start date">
+              <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+              <mat-datepicker #startDate></mat-datepicker>
+              <mat-error *ngIf="!form.get('startDate').valid && form.get('startDate').touched">
+                    Start Date is <strong>Required</strong>
+              </mat-error>
+          </mat-form-field>
+          <mat-form-field class="col-md-3">
+              <input formControlName="startTime" type="text" placeholder="start hour" aria-label="Number" matInput [matAutocomplete]="auto">
+              <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let hour of hours" [value]="hour">
+                    {{ hour }}
+                </mat-option>
+              </mat-autocomplete>
+          </mat-form-field>
+          <mat-form-field class="col-md-3">
+              <input (dateChange)="dateEndChanged($event)" formControlName="endDate" matInput [matDatepicker]="endDate" placeholder="end date">
+              <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+              <mat-datepicker #endDate></mat-datepicker>
+              <mat-error *ngIf="!form.get('endDate').valid && form.get('endDate').touched">
+                    End Date is <strong>Required</strong>
+              </mat-error>
+          </mat-form-field>
+          <mat-form-field class="col-md-3">
+              <input formControlName="endTime" type="text" placeholder="end hour" aria-label="Number" matInput [matAutocomplete]="auto">
+              <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let hour of hours" [value]="hour">
+                    {{ hour }}
+                </mat-option>
+              </mat-autocomplete>
+          </mat-form-field>
+      </div>
+      <div class="row p-1">
+        <div class="col-md-12">
+            <mat-checkbox (change)="allDayChanged($event.checked)" formControlName="allDay">All day</mat-checkbox>
+        </div>
+      </div>
+      <div class="row p-1">
+          <div class="col-md-2">
+            color
+          </div>
+          <div class="col-md-10">
+            <div class="colors">
+                <input formControlName="color" type="hidden">                    
+                <div 
+                *ngFor="let color of colors"
+                [style.backgroundColor]="color"
+                (click)="setColor(color)"
+                [class.active]="form.get('color').value === color"
+                class="color"
+                ></div>
+            </div>
+          </div>
+      </div>
+      <div class="row">
+        <div class="col-12 text-right">
+            <button (click)="cancel()" class="btn btn-danger">Cancel</button>
+            <button type="submit" class="btn btn-success">Save</button>
+        </div>
+      </div>
+    </form>
+    </div>
+</div>

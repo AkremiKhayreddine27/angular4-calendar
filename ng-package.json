@@ -1,0 +1,17 @@
+{
+    "$schema": "./node_modules/ng-packagr/ng-package.schema.json",
+    "lib": {
+      "entryFile": "public_api.ts",
+      "externals": {
+        "@angular/material": "ng.material",
+        "@angular/material-moment-adapter": "ng.material.moment",
+        "@angular/animations": "ng.animations",
+        "@angular/material/core": "ng.material.core",
+        "date-fns": "dateFns",
+        "moment": "ng.moment",
+        "ical": "ng.ical",
+        "immutable-ics": "ng.immutable-ics",
+        "font-awesome": "ng.font-awesome"
+      }
+    }
+  }

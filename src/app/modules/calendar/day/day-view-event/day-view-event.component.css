@@ -1,0 +1,11 @@
+.cal-event{
+    height: 100%;
+    font-size: 12px;
+    padding-left: 5px;
+    color: white !important;
+    font-size: 12px;
+}
+.cal-event a {
+    color: white !important;
+    font-size: 12px; 
+}

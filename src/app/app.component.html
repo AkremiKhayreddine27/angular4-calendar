@@ -1,0 +1,50 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <app-calendar-header
+            [view]="view"
+            [viewDate]="viewDate"
+            [events]="events"
+            (viewChange)="view = $event"
+            (viewDateChange)="viewDate = $event"
+            (newImportedEvents)="import($event.events)"
+            >
+
+            </app-calendar-header>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div [ngSwitch]="view">
+                <app-month-view
+                    *ngSwitchCase="'month'"
+                    [events]="events"
+                    [viewDate]="viewDate"
+                    (dayClicked)="dayClicked($event)"
+                    (eventClicked)="eventClicked($event)"
+                    [refresh]="refresh">
+                </app-month-view>            
+                <app-day-view 
+                    *ngSwitchCase="'day'"
+                    [events]="events"
+                    [viewDate]="viewDate"
+                    (eventClicked)="eventClicked($event)"
+                    [refresh]="refresh">
+                </app-day-view>            
+                <app-week-view  
+                    *ngSwitchCase="'week'"           
+                    [events]="events"
+                    [viewDate]="viewDate"
+                    (eventClicked)="eventClicked($event)"
+                    [refresh]="refresh">
+                </app-week-view>  
+            </div>   
+        </div>       
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <app-btn-add-event (newEvent)="addEvent($event.form)"></app-btn-add-event>
+        </div>
+    </div>
+</div>
+

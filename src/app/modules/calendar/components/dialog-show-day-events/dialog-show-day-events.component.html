@@ -1,0 +1,21 @@
+<div class="card">
+    <div
+     class="card-img-top">
+      <i (click)="onNoClick()" class="fa fa-times"></i>
+      {{ data.day.date | date: 'MMMM d' }}
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item pt-4">
+        <div class="container">
+          <div class="row" *ngFor="let event of data.day.events">
+              <div class="col-2"><i class="fa fa-clock-o mr-3"></i></div>
+              <div class="col-10">
+                {{ event.title }} <br/>
+                {{ event.start | date: 'EEEE MMMM d' }} <br/>
+                {{ event.start | date: 'hh:mm' }} - {{ event.end | date: 'hh:mm' }}
+              </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+</div>

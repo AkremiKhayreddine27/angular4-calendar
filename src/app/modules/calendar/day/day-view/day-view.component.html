@@ -1,0 +1,51 @@
+<div class="cal-day-view" #dayViewContainer>
+  <app-day-view-all-day-event
+    *ngFor="let event of view.allDayEvents"
+    [event]="event"
+    (eventClicked)="eventClicked.emit({event: event})">
+  </app-day-view-all-day-event>
+  <div class="cal-hour-rows">
+    <div class="cal-events">
+      <div
+        #event
+        *ngFor="let dayEvent of view?.events"
+        class="cal-event-container"
+        [class.cal-draggable]="dayEvent.event.draggable"
+        [class.cal-starts-within-day]="!dayEvent.startsBeforeDay"
+        [class.cal-ends-within-day]="!dayEvent.endsAfterDay"
+        [ngClass]="dayEvent.event.cssClass"
+        mwlResizable
+        [resizeEdges]="{top: dayEvent.event?.resizable?.beforeStart, bottom: dayEvent.event?.resizable?.afterEnd}"
+        [resizeSnapGrid]="{top: eventSnapSize, bottom: eventSnapSize}"
+        [validateResize]="validateResize"
+        (resizeStart)="resizeStarted(dayEvent, $event, dayViewContainer)"
+        (resizing)="resizing(dayEvent, $event)"
+        (resizeEnd)="resizeEnded(dayEvent)"
+        mwlDraggable
+        [dragAxis]="{x: false, y: dayEvent.event.draggable && currentResizes.size === 0}"
+        [dragSnapGrid]="{y: eventSnapSize}"
+        [validateDrag]="validateDrag"
+        (dragStart)="dragStart(event, dayViewContainer)"
+        (dragEnd)="eventDragged(dayEvent, $event.y)"
+        [style.marginTop.px]="dayEvent.top"
+        [style.height.px]="dayEvent.height"
+        [style.marginLeft.px]="dayEvent.left + 70"
+        [style.width.px]="dayEvent.width - 1">
+        <app-day-view-event
+          [dayEvent]="dayEvent"
+          (eventClicked)="eventClicked.emit({event: dayEvent.event})">
+        </app-day-view-event>
+      </div>
+    </div>
+    <div class="cal-hour" *ngFor="let hour of hours" [style.minWidth.px]="view?.width + 70">
+      <app-day-view-hour-segment
+        *ngFor="let segment of hour.segments"
+        [style.height.px]="hourSegmentHeight"
+        [segment]="segment"
+        [segmentHeight]="hourSegmentHeight"
+        [locale]="locale"
+        (click)="hourSegmentClicked.emit({date: segment.date})">
+      </app-day-view-hour-segment>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,59 @@
+<div class="cal-month-view">
+    <app-month-view-header
+      [days]="columnHeaders"
+      [locale]="locale">
+    </app-month-view-header>
+    <div class="cal-days">
+        <div class="cal-row" *ngFor="let rowIndex of view.rowOffsets; let index = index">
+          <div *ngIf="rowIndex" class="cal-cell-row">
+              <app-month-cell
+              class="cal-day-cell"
+              *ngFor="let day of rowIndex.days"
+              [class.cal-drag-over]="day.dragOver"
+              [ngClass]="day?.cssClass"
+              [day]="day"
+              [openDay]="openDay"
+              [locale]="locale"
+              (click)="dayClicked.emit({day:day})"
+              mwlDroppable
+              (dragEnter)="day.dragOver = true"
+              (dragLeave)="day.dragOver = false">
+            </app-month-cell>
+            <div *ngFor="let event of rowIndex.events">
+                <div
+                *ngIf="!event.hidden && event.event.allDay"
+                class="month-event"
+                [style.height.px]="20"
+                [style.top.px]="event.top"
+                [style.backgroundColor]="event.event.color.primary"
+                [style.left]="event.left + '%'"
+                [style.width]="event.width + '%'"
+                (click)="eventClicked.emit({event:event.event})"
+                >
+                <div class="month-event-title">
+                    {{ event.event.start | date : 'hh:mm a'}} {{ event.event.title }}
+                </div>
+                </div>
+                <div
+                *ngIf="!event.hidden && !event.event.allDay"
+                class="non-all-day-event"
+                [style.height.px]="20"
+                [style.top.px]="event.top"
+                [style.left]="event.left + '%'"
+                (click)="eventClicked.emit({event:event.event})"
+                >
+                  <div
+                      class="non-all-day-event-bg"
+                      [style.backgroundColor]="event.event.color.primary">
+                  </div>
+                  <div
+                   class="non-all-day-event-title">
+                      {{ event.event.start | date : 'hh:mm a'}} {{ event.event.title }}                  
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+  

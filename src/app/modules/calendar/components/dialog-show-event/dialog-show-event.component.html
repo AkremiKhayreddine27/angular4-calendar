@@ -1,0 +1,23 @@
+<div class="card">
+    <div
+    [style.backgroundColor]="data.event.color.primary"
+     class="card-img-top">
+      <i (click)="onNoClick()" class="fa fa-times"></i>
+      <button class="fa fa-trash"></button>
+      <i class="fa fa-edit" [style.backgroundColor]="data.event.color.primary"></i>
+      {{ data.event.title }}
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item pt-4">
+        <div class="container">
+          <div class="row">
+              <div class="col-2"><i class="fa fa-clock-o mr-3"></i></div>
+              <div class="col-10">
+                {{ data.event.start | date: 'EEEE MMMM d' }} <br/>
+                {{ data.event.start | date: 'hh:mm' }} - {{ data.event.end | date: 'hh:mm' }}
+              </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+</div>

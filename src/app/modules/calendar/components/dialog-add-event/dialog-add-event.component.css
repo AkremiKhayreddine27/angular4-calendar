@@ -1,0 +1,23 @@
+.colors {
+    display: flex;
+}
+.color {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background-color: #f4511e;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.color:hover {
+    border: 4px double #ffffff;
+    border-collapse: separate;
+    border-spacing: 5px;
+}
+
+.color.active {
+    border: 4px double #ffffff;
+    border-collapse: separate;
+    border-spacing: 5px;
+}

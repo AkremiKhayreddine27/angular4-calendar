@@ -1,0 +1,37 @@
+<div class="calendar-week-view">
+    <app-week-view-header
+    [days]="days"
+    (eventClicked)="eventClicked.emit({event : $event.event})"
+    [allDayEvents]="view?.allDays">
+    </app-week-view-header>
+    <div class="cal-week-container">
+        <div class="hour-segments">
+            <div class="hour-segment-col" *ngFor="let hour of hours">
+              {{ hour.segments[0].date | date: 'hh a' }}
+            </div>
+        </div>
+        <div class="days-container">
+            <div
+            *ngFor="let day of view.days"
+            class="day">
+            <div
+            *ngFor="let hour of day.hours" 
+            class="day-hour"></div>
+            <div
+            *ngFor="let event of day.events"
+            >
+                <div 
+                *ngIf="!event.event.allDay"
+                [style.top.px]="event.top"
+                [style.height.px]="event.height"
+                (click)="eventClicked.emit({event : event.event})"
+                [style.backgroundColor]="event.event.color.primary"
+                class="day-event">
+                    {{ event.event.title }}
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+

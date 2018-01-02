@@ -1,0 +1,52 @@
+<ng-template
+#defaultTemplate
+let-days="days"
+let-locale="locale"
+let-dayHeaderClicked="dayHeaderClicked"
+let-eventDropped="eventDropped">
+<div class="cal-week-day-headers">
+<div class="cal-day-headers">
+  <div
+    class="cal-header"
+    *ngFor="let day of days"
+    [class.cal-past]="day.isPast"
+    [class.cal-today]="day.isToday"
+    [class.cal-future]="day.isFuture"
+    [class.cal-weekend]="day.isWeekend"
+    [class.cal-drag-over]="day.dragOver"
+    [ngClass]="day.cssClass"
+    (click)="dayHeaderClicked.emit({day: day})"
+    mwlDroppable
+    (dragEnter)="day.dragOver = true"
+    (dragLeave)="day.dragOver = false"
+    (drop)="day.dragOver = false; eventDropped.emit({event: $event.dropData.event, newStart: day.date})">
+    <b>{{ day.date | date:'E' }}</b><br>
+    <span>{{ day.date | date:'d' }}</span>
+  </div>
+</div>
+<div #eventRowContainer class="cal-events-row">
+  <div
+  *ngFor="let weekEvent of allDayEvents"
+  #event
+  class="cal-event-container"
+  [style.width]="(((100 / days.length) * weekEvent.span)) + '%'"
+  [style.marginLeft]="(((100 / days.length) * weekEvent.offset)) + '%'"
+  [style.marginTop.px]="0" 
+  [style.height.px]="weekEvent.height -6"
+  >
+  <div
+  class="cal-event"
+  (click)="eventClicked.emit({event : weekEvent.event})"
+  [class.cal-starts-within-week]="weekEvent.startsBeforeWeek"
+  [class.cal-ends-within-week]="weekEvent.endsAfterWeek"
+  [style.backgroundColor]="weekEvent.event.color.primary">
+    {{ weekEvent.event.title }}
+</div>
+</div>
+</div>
+</div>
+</ng-template>
+<ng-template
+[ngTemplateOutlet]="defaultTemplate"
+[ngTemplateOutletContext]="{days: days, locale: locale, dayHeaderClicked: dayHeaderClicked, eventDropped: eventDropped}">
+</ng-template>

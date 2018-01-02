@@ -1,0 +1,17 @@
+<ng-template
+#defaultTemplate
+let-event="event"
+let-view="view">
+<a
+  class="cal-event-title"
+  href="javascript:;"
+  [innerHTML]="event.title">
+</a>
+</ng-template>
+<ng-template
+[ngTemplateOutlet]="defaultTemplate"
+[ngTemplateOutletContext]="{
+  event: event,
+  view: view
+}">
+</ng-template>

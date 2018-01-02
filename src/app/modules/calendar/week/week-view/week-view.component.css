@@ -1,0 +1,58 @@
+.calendar-week-view {
+  background-color: white;
+}
+
+.cal-week-container{
+  display: flex;
+}
+
+.hour-segments{
+    height: 1440px;
+    display: flex;
+    flex-direction: column;
+    width: 50px;
+    border-right: 1px solid #dddddd;
+    border-left: 1px solid #dddddd;
+}
+  
+.hour-segment-col:first-child{
+  border-top: 1px solid #dddddd;
+}
+.hour-segment-col{
+    flex: 1;
+    width: 48px;
+    border-bottom: 1px solid #dddddd;
+    background-color: white;
+    font-size: 12px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding-right: 5px;
+}
+.days-container {
+  flex: 1;
+  display: flex;
+  height: 1440px;
+}
+
+.day-hour {
+  flex: 1;
+  border-bottom: 1px solid #dddddd;
+}
+.day {
+  flex: 1;
+  border-right: 1px solid #dddddd;
+  height: 1440px;
+  position: relative;
+  display: flex;
+  flex-direction: column; 
+}
+
+.day-event{
+  position: absolute;
+  width: 100%;
+  color:white;
+  font-size: 12px;
+  padding: 5px;
+  cursor: pointer;
+}

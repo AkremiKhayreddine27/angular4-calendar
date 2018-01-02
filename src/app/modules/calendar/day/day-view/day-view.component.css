@@ -1,0 +1,16 @@
+.cal-day-view .cal-hour-rows {
+  width: 100%;
+  border: solid 1px #e1e1e1;
+  overflow-x: scroll;
+  position: relative;
+}
+  
+.cal-day-view .cal-hour {
+  background-color: white;
+}
+  
+.cal-event-container {
+  position: absolute;
+}
+  
+  

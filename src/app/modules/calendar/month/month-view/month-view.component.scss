@@ -1,0 +1,96 @@
+.cal-month-view{
+    overflow: hidden;
+    background-color: white;
+}
+.cal-days {
+    border: 1px solid #E0E0E0;
+    border-bottom: 0;
+    position: relative;
+}
+
+
+.month-events-of-week{
+    flex: 1;
+}
+.cal-row{
+    position: relative;
+}
+
+.month-event {
+    position: absolute;
+    color: white;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    overflow: hidden;
+}
+.month-event-title {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    flex: 1;
+    overflow: hidden;
+}
+.non-all-day-event{
+    cursor: pointer;
+    position: absolute;
+    display: flex;
+    font-size: 12px;
+    align-items: center;
+    width:(100% / 7);
+    overflow: hidden;
+}
+.non-all-day-event-title{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    flex: 1;
+    overflow: hidden;
+}
+.non-all-day-event-bg{
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.cal-cell-row:hover {
+    background-color: #fafafa;
+}
+
+.cal-cell-row .cal-cell:hover,
+.cal-cell.cal-has-events.cal-open {
+  background-color: #ededed;
+}
+
+.cal-cell-row {
+    display: flex;
+}
+
+.cal-cell {
+    float: left;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.cal-day-cell {
+    height: 100px;
+    width: (100% / 7);
+    overflow: hidden;
+}
+
+.cal-day-cell:not(:last-child) {
+    border-right: 1px solid #E0E0E0;
+}
+
+.cal-weekend:not(:first-child) {
+    border-right: none !important;
+}
+
+.cal-days .cal-cell-row {
+    border-bottom: 1px solid #E0E0E0;
+}

@@ -1,0 +1,31 @@
+.calendar-import-export{
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.inputfile + label {
+    color: white;
+    background-color: #DC3545;
+    display: inline-block;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    cursor: pointer;
+}
+
+.btn {
+    border-radius :0; 
+}

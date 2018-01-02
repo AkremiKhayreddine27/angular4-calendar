@@ -1,0 +1,35 @@
+.cal-week-day-headers{
+    position: relative;
+    margin-left: 50px;
+  }
+.cal-day-headers {
+      display: flex;
+      border: 1px solid #e1e1e1;
+      background-color: white;
+}
+  
+.cal-day-headers .cal-header {
+      flex: 1;
+      text-align: center;
+      padding: 5px 0;
+}
+
+.cal-events-row{
+      border: 1px solid #e1e1e1;
+      background-color: white;
+      border-top: none;
+      position: relative;
+}
+
+.cal-event {
+      padding: 5px;
+      font-size: 12px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      height: 100%;
+      box-sizing: border-box;
+      margin: 2px !important;
+      color: white;
+      cursor: pointer;
+    } 
