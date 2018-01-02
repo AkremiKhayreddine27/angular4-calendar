@@ -7,7 +7,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 First install through npm:
 
 ```bash
-npm install --save angular4-calendar
+npm install --save https://github.com/AkremiKhayreddine27/angular4-calendar/blob/master/angular4-calendar-0.0.0.tgz
 ```
 
 Finally import the calendar module into your apps module:
