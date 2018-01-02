@@ -13,7 +13,6 @@
     "packagr": "ng-packagr -p ng-package.json",
     "styles": "scss-bundle -c scss-bundle.config.json"
   },
-  "private": true,
   "dependencies": {
     "@angular/animations": "^5.1.2",
     "@angular/cdk": "^5.0.2",
